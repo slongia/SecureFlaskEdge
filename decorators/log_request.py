@@ -11,9 +11,7 @@ def log_request(prefix="LOG"):
         @wraps(func)
         def wrapper(*args, **kwargs):
             start_time = time.time()
-            method = request.method
-            path = request.path
-
+            
             response = func(*args, **kwargs)
             duration = round((time.time() - start_time) * 1000, 2)
             conn = get_connection()
@@ -23,7 +21,7 @@ def log_request(prefix="LOG"):
                 INSERT INTO api_logs(prefix, endpoint, method, duration_ms)
                         VALUES (%s,%s,%s,%s)
                         """,
-                (prefix, path, method, duration),
+                (prefix, request.path, request.method, duration),
             )
             conn.commit()
             cur.close()
