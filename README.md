@@ -3,6 +3,7 @@ A full-stack, containerized microservice with modular Python decorators for logg
 ---------------------------
 Folder Structure
 ---------------------------
+```
 flask-decorator-stack/
 ├── app.py
 ├── db.py
@@ -13,3 +14,4 @@ flask-decorator-stack/
 │   ├── log_request.py
 │   ├── auth_required.py
 │   └── rate_limiter.py
+```
