@@ -3,15 +3,15 @@ from decorators.log_request import log_request
 from decorators.auth_required import auth_required
 from decorators.rate_limiter import rate_limiter
 
-app = Flask("SecureFlaskEdge")
+app = Flask(__name__)
 
 
-@app.route("/secure-data")
-@rate_limiter(max_calls=3, window_seconds=30)
+@app.route("/secure")
+@rate_limiter()
 @auth_required()
 @log_request(prefix="SECURE")
-def secure_data():
-    return {"status": "success", "data": "top secret info"}
+def secure():
+    return {"message": "Authenticated and Logged."}
 
 
 @app.route("/", methods=["GET"])

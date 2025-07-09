@@ -1,4 +1,6 @@
-Flask
+flask
 psycopg2-binary
 redis
 redis-server
+python-dotenv
+gunicorn
